@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sovereign Scanner</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 18px;
+  background: #0b1018;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  color: #f5bd32;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 15px 0;
+}
+
+.subtitle {
+  color: #aab2c0;
+}
+
+.panel {
+  background: #182231;
+  padding: 16px;
+  border-radius: 12px;
+  margin-top: 18px;
+}
+
+h2 {
+  color: #f5bd32;
+  font-size: 19px;
+}
+
+select {
+  width: 100%;
+  padding: 13px;
+  background: #263447;
+  color: white;
+  border: 1px solid #f5bd32;
+  border-radius: 7px;
+  font-size: 16px;
+}
+
+.chart {
+  height: 430px;
+  width: 100%;
+}
+
+tv-advanced-chart,
+tv-technical-analysis {
+  display: block;
+  width: 100%;
+}
+
+tv-technical-analysis {
+  height: 450px;
+}
+
+footer {
+  text-align: center;
+  color: #8b95a5;
+  margin: 30px 0;
+}
+</style>
+</head>
+
+<body>
+
+<header>♛ SOVEREIGN SCANNER</header>
+
+<p class="subtitle">
+Trade Smart. Rule Your Own Path.
+</p>
+
+<div class="panel">
+<h2>MARKET SELECTOR</h2>
+
+<select id="market">
+<option value="OANDA:XAUUSD">GOLD (XAUUSD)</option>
+<option value="FX:EURUSD">EUR/USD</option>
+<option value="FX:GBPUSD">GBP/USD</option>
+<option value="FX:USDJPY">USD/JPY</option>
+<option value="FX:AUDUSD">AUD/USD</option>
+</select>
+</div>
+
+<div class="panel">
+<h2>LIVE TRADING CHART</h2>
+
+<div class="chart">
+<tv-advanced-chart
+id="chart"
+symbol="OANDA:XAUUSD"
+interval="15"
+theme="dark"
+autosize>
+</tv-advanced-chart>
+</div>
+</div>
+
+<div class="panel">
+<h2>BUY / SELL ANALYSIS</h2>
+
+<tv-technical-analysis
+id="analysis"
+symbol="OANDA:XAUUSD">
+</tv-technical-analysis>
+
+</div>
+
+<footer>
+SOVEREIGN SCANNER © 2026
+<br><br>
+Built for traders.
+</footer>
+
+<script type="module"
+src="https://widgets.tradingview-widget.com/w/en/tv-advanced-chart.js">
+</script>
+
+<script type="module"
+src="https://widgets.tradingview-widget.com/w/en/tv-technical-analysis.js">
+</script>
+
+<script>
+const selector = document.getElementById("market");
+const chart = document.getElementById("chart");
+const analysis = document.getElementById("analysis");
+
+selector.addEventListener("change", function() {
+  chart.setAttribute("symbol", this.value);
+  analysis.setAttribute("symbol", this.value);
+});
+</script>
+
+</body>
+</html>
